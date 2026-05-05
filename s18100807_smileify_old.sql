@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `s18100807_smileify`
+-- DatabasE: `s18100807_smileify`
 --
 
 -- --------------------------------------------------------
