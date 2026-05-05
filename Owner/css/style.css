@@ -1,0 +1,439 @@
+.dashboard {
+    padding: 5rem;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.card {
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+}
+
+.card h2 {
+    color: #122130;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.card .appointment,
+.card .announcement {
+    margin-bottom: 0.8rem;
+    padding: 0.5rem;
+    border-left: 4px solid #122130;
+    background: #eef4ff;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+.quick-links a,
+.card-link {
+    display: inline-block;
+    margin: 0.5rem 0.3rem;
+    padding: 0.8rem 1.2rem;
+    background: #122130;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.quick-links a:hover {
+    background: #2a394d;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 40px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.message-box {
+    width: 350px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.tabs-container {
+    flex: 1;
+    min-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tabs {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 10px 0 0 0;
+    justify-content: center;
+    width: 100%;
+}
+
+.tabs-container-branch {
+    flex: 1;
+    min-width: 350px;
+}
+
+.tabs-branch {
+    display: flex;
+}
+
+.tab-content {
+    display: none;
+    width: 80%;
+}
+
+#adminsTable,
+#dentistsTable,
+#servicesTable,
+#promosTable {
+    width: 100% !important;
+}
+
+.branches-table {
+    width: 100% !important;
+}
+
+.services-table,
+.promos-table {
+    width: 80% !important;
+    margin: 3% auto;
+}
+
+#adminsTable_filter,
+#dentistsTable_filter,
+#branchesTable_filter,
+#servicesTable_filter,
+#promosTable_filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#adminsTable_filter input[type="search"],
+#dentistsTable_filter input[type="search"],
+#branchesTable_filter input[type="search"],
+#servicesTable_filter input[type="search"],
+#promosTable_filter input[type="search"] {
+    height: 38px;
+    padding: 6px 12px;
+}
+
+#adminsTable_filter button,
+#dentistsTable_filter button,
+#branchesTable_filter button,
+#servicesTable_filter button,
+#promosTable_filter button {
+    height: 38px;
+    padding: 6px 12px;
+    border: 1px solid #1e293b;
+    border-radius: 4px;
+    background-color: #1e293b;
+    color: #fff;
+    cursor: pointer;
+}
+
+#adminsTable th:nth-child(1), #adminsTable td:nth-child(1) { width: 5% !important; text-align: center;}
+#adminsTable th:nth-child(2), #adminsTable td:nth-child(2) { width: 10% !important; }
+#adminsTable th:nth-child(3), #adminsTable td:nth-child(3) { width: 30% !important; }
+#adminsTable th:nth-child(4), #adminsTable td:nth-child(4) { width: 5% !important; text-align: center;}
+#adminsTable th:nth-child(5), #adminsTable td:nth-child(5) { width: 5% !important; text-align: center;}
+
+#dentistsTable th:nth-child(1), #dentistsTable td:nth-child(1) { width: 5% !important; text-align: center;}
+#dentistsTable th:nth-child(2), #dentistsTable td:nth-child(2) { width: 10% !important; }
+#dentistsTable th:nth-child(3), #dentistsTable td:nth-child(3) { width: 30% !important; }
+#dentistsTable th:nth-child(4), #dentistsTable td:nth-child(4) { width: 5% !important; text-align: center;}
+#dentistsTable th:nth-child(5), #dentistsTable td:nth-child(5) { width: 5% !important; text-align: center;}
+
+#servicesTable th:nth-child(1), #servicesTable td:nth-child(1) { width: 15% !important; text-align: left;}
+#servicesTable th:nth-child(2), #servicesTable td:nth-child(2) { width: 30% !important; }
+#servicesTable th:nth-child(3), #servicesTable td:nth-child(3) { width: 10% !important; text-align: center;}
+#servicesTable th:nth-child(4), #servicesTable td:nth-child(4) { width: 10% !important; text-align: center;}
+#servicesTable th:nth-child(5), #servicesTable td:nth-child(5) { width: 10% !important; text-align: center;}
+
+#promosTable th:nth-child(1), #promosTable td:nth-child(1) { width: 15% !important; text-align: left;}
+#promosTable th:nth-child(2), #promosTable td:nth-child(2) { width: 30% !important; }
+#promosTable th:nth-child(3), #promosTable td:nth-child(3) { width: 5% !important; text-align: center;}
+#promosTable th:nth-child(4), #promosTable td:nth-child(4) { width: 20% !important; text-align: center;}
+#promosTable th:nth-child(5), #promosTable td:nth-child(5) { width: 10% !important; text-align: center;}
+
+#branchesTable th:nth-child(1), #branchesTable td:nth-child(1) { width: 5% !important; text-align: center;}
+#branchesTable th:nth-child(2), #branchesTable td:nth-child(2) { width: 20% !important; }
+#branchesTable th:nth-child(3), #branchesTable td:nth-child(3) { width: 5% !important; text-align: center;}
+#branchesTable th:nth-child(4), #branchesTable td:nth-child(4) { width: 10% !important; text-align: center;}
+#branchesTable th:nth-child(5), #branchesTable td:nth-child(5) { width: 5% !important; text-align: center;}
+#branchesTable th:nth-child(6), #branchesTable td:nth-child(6) { width: 10% !important; text-align: center;}
+
+.transaction-table th:nth-child(1),.transaction-table td:nth-child(1) { width: 10% !important; text-align: center;}
+.transaction-table th:nth-child(2),.transaction-table td:nth-child(2) { width: 30% !important; }
+.transaction-table th:nth-child(3),.transaction-table td:nth-child(3) { width: 30% !important; }
+.transaction-table th:nth-child(4),.transaction-table td:nth-child(4) { width: 15% !important; }
+.transaction-table th:nth-child(5),.transaction-table td:nth-child(5) { width: 15% !important; text-align: center;}
+
+@media (max-width: 900px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        justify-content: center;
+        align-items: center;
+    }
+    .profile-card {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .dashboard {
+        padding: 10px;
+    }
+
+    .cards {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .card {
+        flex: 1 1 100%;
+        min-width: unset;
+        padding: 15px;
+    }
+
+    .card h2 {
+        font-size: 1em;
+    }
+
+    .announcement {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+
+    .quick-links {
+        gap: 8px;
+    }
+
+    .quick-links a {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+
+    .nav-container{
+        flex-direction: row;
+    }
+
+    .tabs-container {
+        padding: 10px;
+    }
+
+    .tabs-nomargin {
+        display: none;
+    }
+
+    .mobile-branch-select, .mobile-mode-select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+
+    .sub-tabs {
+        display: none;
+    }
+
+    .branch-growth-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .branch-growth-table {
+        font-size: 14px;
+        overflow-x: auto;
+        display: block;
+        white-space: nowrap;
+    }
+
+    .branch-growth-table th, .branch-growth-table td {
+        padding: 6px;
+    }
+
+    .branch-growth-chart canvas {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .branch-growth-chart, .branch-growth-chart-decline{
+        justify-content: center;
+    }
+
+    .calendar-container {
+        padding: 10px;
+    }
+
+    #calendarLegend {
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+
+    #calendar {
+        height: 400px;
+        max-width: 100%;
+    }
+
+    .manage-calendar-modal-content {
+        width: 95%;
+        padding: 15px;
+        max-height: 90vh;
+    }
+
+    .manage-calendar-modal-content-body {
+        font-size: 14px;
+    }
+
+    .fc .fc-toolbar{
+        flex-direction: column;
+    }
+
+    .tabs-container {
+        padding: 5px;
+    }
+
+    .tab {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .tab-content {
+        padding: 5px;
+    }
+
+    .transaction-table {
+        font-size: 12px;
+    }
+
+    .transaction-table th, .transaction-table td {
+        padding: 5px;
+        min-width: 100px;
+    }
+
+    .manage-employee-modal-content {
+        width: 98%;
+        padding: 10px;
+    }
+
+    #servicesTable_wrapper, #adminsTable_wrapper, #dentistsTable_wrapper{
+        overflow: auto;
+    }
+
+    .schedule-row select{
+        width: 75%;
+    }
+
+    .schedule-row{
+        display: flex;
+        gap: 5px;
+        align-items: start;
+        flex-direction: column;
+    }
+
+    .manage-service-modal-content {
+        width: 95%;
+        padding: 15px;
+        max-height: 90vh;
+    }
+
+    .promos-table {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    #promosTable {
+        min-width: 600px;
+        font-size: 14px;
+    }
+
+    #managePromoModal .manage-promo-modal-content {
+        width: 95%;
+        max-width: none;
+        margin: 10% auto;
+    }
+
+    .profile-container {
+        padding: 10px;
+    }
+
+    .profile-section {
+        gap: 15px;
+    }
+
+    .profile-card {
+        padding: 15px;
+    }
+
+    .tabs-branch {
+        flex-direction: column;
+    }
+
+    .tab {
+        padding: 8px 15px;
+    }
+
+    .branches-table {
+        margin-top: 15px;
+        overflow-x: auto;
+    }
+
+    .transaction-table th, .transaction-table td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .edit-profile-modal-content, .change-password-modal-content, .manage-branch-modal-content {
+        width: 95%;
+        padding: 15px;
+        max-height: 90vh;
+    }
+
+    .form-group.phone-group {
+        position: relative;
+    }
+
+    .phone-prefix {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #999;
+    }
+
+    .form-control {
+        padding-left: 50px;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .form-button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

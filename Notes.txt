@@ -1,0 +1,991 @@
+dependent
+    - booking relationship
+    - list of dependents in admins page
+deactivating a branch
+    - resched all appointments 
+        - affected dentists_sched, branch_announcements, dentsist_services, dentist_branch, branch_service, appointment_transaction with time overlapping
+
+
+
+====================================================================
+
+Smile ify Dashboard (Index)
+
+    Login Form
+        - for registered users and staffs (owner, secretaries)
+        - Secretaries are restricted from logging in on mobile
+        - Forgot Password  
+            - Username Field
+
+    Registration/Appointment Booking
+        - Adult And Dependent
+            - personal information
+                - email validator
+                    - only domain checker
+                    - email format
+                - dob validator
+                    - no future dates
+                    - 00/00/0000
+                - contact number validator
+                    - 10 digits (+63 is provided)
+
+            - Appointment information
+                - all data that are Active
+                - appointment date 
+                    - no past dates
+                    - closed dates (based on announcemnts)
+                    - no sundays
+                    - 00/00/0000
+                - apoointment time
+                    - all booked are grayed out
+                - services
+                    - calculate estimated end time
+                    - if exceeds 4:30, invalidate
+                - dentist
+                    - available dentist removed
+                        - to prevent if users booked multiple NULL dentists 
+                        - actual dentist on the transaction
+                    - all booked dentists are excluded
+        OTP verification
+            - for verification
+        Appointment Verification
+            - login credentials and booked appointment details
+
+    Available Dentist
+    Available Services
+    View Infographics
+
+    Footer
+        - all active data
+
+====================================================================
+
+OWNER
+
+	Profile setup
+		- qr
+		- password, email change
+
+	Branches
+		- add & edit
+			- google url
+
+	Home/Dashboard
+		- cards
+		- quick links
+
+	Reports
+
+	Calendar
+
+	Employees
+		Secretaries
+			- add
+				- email confirmation
+			- edit
+				- if start date passed, readonly
+
+		Dentists
+			- add
+				- license number - encrypted
+				- all branches and services prechecked
+				- schedule in week
+			- edit 
+				- remove images
+
+	Services
+		- add & edit
+			- price and durations can be 0 (free)
+			- for xray required xray image in transaction
+	
+	Promos
+		- add & edit
+			- image required to be displayed across the system
+			- start date & end date 
+				- cant be the same
+				- automatic 1 month time span
+
+====================================================================
+
+ADMIN/SECRETARY
+
+	Profile setup
+		- edit profile
+		- password, email change
+
+	Announcements
+        - add & edit
+            - start/end date 
+                - can be the same
+            - checkbox and notify owner's accounts
+
+        - displayed accross the system
+
+	Home/Dashboard
+		- cards
+		- quick links
+        - appointment (walkins)
+            - booking for adult & booking for dependent
+            - email confirmation with login credentials
+    
+	Calendar
+    
+    Reports
+
+    Patients
+        - Recent bookings
+            - all upcoming appointments 
+            - manage appointment
+                - profile info with guardian if dependent
+                    - if no data (transaction, vitals, prescription)
+                        - resched & cancel appointment
+                    - if has data either
+                        - complete transaction
+                
+                - resched
+                    - preselected values
+                    - notify patient
+
+                - cancel
+                    - confirmation
+                    - notify patient
+
+                - transaction
+                    - add & edit
+                        - preselected values depending on the appointment
+                        - additional payment for each service rendered
+                        - if service is xray required (optional file upload)
+                        - dental certificate 
+                            - period of rest
+                        - promo availed
+                        - payment method
+                            - cashless (optional file upload)
+                        - transaction summary
+
+                - vitals
+                - prescription
+
+                - complete
+                    - cant complete if no transaction or vital
+                    - auto update the supplies
+                    - notify patient
+
+        - Registered Patients 
+            - all patients active 
+            - if recent transaction past 5 years, auto deactivate
+            - patient
+                - can deactivate patient accounts
+                - can book for the patient or add dependent account booking(if dependent, only for the dependent booking)
+                - appointment view
+                - transaction view 
+                    - receipt
+                    - if cashless, view cashless receipt
+                    - view xray if there is result
+                    - prescription
+                - in dental certificate
+                    - can issue, if requested or none, for walkins
+                        - no payment method if free
+                    - after issuing, notify patient
+                    - verify receipt if requested thru online
+                        - input fields for dental certificate
+                
+        - Inactive / Archived
+            - all patient inactive
+            - patient
+                - can activate patient accounts
+    
+    Supplies 
+        - add & edit
+            - each services qty
+
+    Services 
+        - add & edit
+            - only status
+            - owner is notified
+            
+    Promos 
+        - add & edit
+            - only status
+            - owner is notified
+
+====================================================================
+
+PATIENT
+    Home/Dashboard
+        - cards 
+        - quick links
+        - appointment booking
+            - times are grayed out if booked for each user or dependent
+            - for self
+                - normal booking
+            - for dependent (new)
+                - dob validation
+            - registered dependent
+                - list of dependents
+
+	Calendar
+
+	Profile setup
+		- edit profile
+		- password, email change
+
+        - appointment view
+
+        - transaction 
+            - can request dental certificate
+                - if free, submit directly
+                - if not, file upload required
+            - dental certificate issued, can download 
+                - only once 
+            - prescription
+
+    Dependents
+        - dependents
+            - info
+            - appointment view
+            - transaction 
+                - behaves the same with patient/guardian
+
+====================================================================
+
+OVERALL
+	date pickers
+		no 00-00-0000
+		dob 
+			- no future dates
+		start date/bookings
+			- no past dates
+			- no sundays
+	emails
+		real time validation
+			- only domain checker
+			- email format
+
+OTPs / Email Confirmations
+	- no multiple otp request
+	- using brevo
+    - masked email for privacy
+    - in password, logout users if logged in
+
+RESEND OTP
+
+Email Reminder
+	24 hours before appointment
+
+Data Privacy
+	all passwords hashed
+	all users dob, contact number, address AND dentists license number
+		- using AES-256-GCM ENCRYPTION / DECRYPTION (to study)
+		- encryptField AND decryptField
+		- (en/decrypyt, en/decrypyt_iv, en/decrypyt_tag) 	.env = APP_ENC_KEY
+
+====================================================================
+
+3 adults bookings
+    - on the spot dental certificate
+    - walkin request for dental certificate
+    - online request for dental certificate
+
+
+Transactions
+without dental certificate
+with promo
+with/out xray 
+with cashless
+
+users with appointments
+users with 3 transactions
+
+
+====================================================================
+add more dentist
+add last week,month data for reports
+    - get old db
+add promo that is available friday and not
+supplies
+book that will notify tomorrow
+====================================================================
+
+1 owner account
+1 secretary account
+
+1 patient account for forgot password, cancel, resched  *Cuizon_D 
+1 patient account for completion newly created secretary appointment booked *auntie
+1 patient account for requesting dent cert thru online and donwloading documents 
+====================================================================
+to insert
+
+bookings for reports
+    last month
+        Babag
+            1 cancelled 
+            5 completed
+        Pusok
+            2 cancelled
+            3 completed
+        Mandaue
+            2 cancelled
+            3 completed
+    last week
+        Babag
+            1 cancelled 
+            2 completed
+        Pusok
+            2 cancelled
+            1 completed
+        Mandaue
+            1 cancelled
+            3 completed
+    today
+        1 cancelled 9:00
+        3 completed
+
+Reminder Sample 
+    booking for today
+
+
+====================================================================
+
+
+ // ===== MEDCERT VALIDITY =====
+                        let medCertButtonHtml = "";
+                        let medCertExpired = false;
+
+                        if (data.date_created) {
+                            const createdDate = new Date(data.date_created);
+                            const now = new Date();
+                            const diffDays = (now - createdDate) / (1000 * 60 * 60 * 24);
+                            medCertExpired = diffDays >= 7;
+                        }
+
+                        if (medCertExpired && data.medcert_status !== 'Expired') {
+                            medCertButtonHtml = `<button class="confirm-btn expired-btn" disabled>Expired</button>`;
+                        } else {
+                            medCertButtonHtml =
+                                data.medcert_status === 'None'
+                                    ? `<button class="confirm-btn" id="requestMedicalCertificate" data-id="${data.dental_transaction_id}">Request Dental Certificate</button>`
+                                    : data.medcert_status === 'Requested'
+                                        ? `<button class="confirm-btn pending-btn" disabled>Pending</button>`
+                                        : data.medcert_status === 'Eligible'
+                                            ? `<button class="confirm-btn" id="downloadMedicalCertificate">Download Dental Certificate</button>`
+                                            : data.medcert_status === 'Issued'
+                                                ? `<button class="confirm-btn issued-btn" id="viewMedCertReceipt" data-id="${data.dental_transaction_id}">Issued</button>`
+                                                : data.medcert_status === 'Expired'
+                                                    ? `<button class="confirm-btn expired-btn" id="viewMedCertReceipt" data-id="${data.dental_transaction_id}">Expired</button>`
+                                                    : '';
+                        }
+
+                        // ===== PRESCRIPTIONS VALIDITY =====
+                        let prescriptionButtonHtml = "";
+
+                        const hasPrescriptions = data.prescriptions && data.prescriptions.length > 0;
+
+                        let isExpired = false;
+                        if (data.date_created) {
+                            const createdDate = new Date(data.date_created);
+                            const now = new Date();
+                            const diffYears = (now - createdDate) / (1000 * 60 * 60 * 24 * 365);
+                            isExpired = diffYears >= 1;
+                        }
+
+====================================================================
+Minimum of 5 minutes for OTP time remaining expiration time 💖{
+    const expiryLimit = 60;
+    $expiry_limit = 60;
+    if (($currentTime - $otpCreatedTime) > 60)
+}
+====================================================================
+Error on change password OTP Fix 👍
+Validation for the Date of Birth, so that it will not accept 0000 👍
+In adding dentist for the owner, autocheck services all by default, and the owner will just uncheck on what the dentist's non specialty 👍
+Disable future dates in choosing date of birth 👍
+Suggestion: Change the color / change the symbol or an indicator which will distinguish by branch 👍 with legend
+Disable letter input in OTP verification 👍
+Change joined in profile to Registered 👍
+appointment Search/' : Service , Branch, Service 👍dentist di lng?
+Completed should not be in the appointment history👍
+Remove Route from prescription 👍
+Prescription Download: Digital Prescription, alignment changes 👍
+Not bullet, but number in the digital prescription 👍
+Signature will adjust on the layput 👍
+Time and Gender will be removed 👍
+Add Quantity of drugs in prescription👍
+Change the Date to date Issued : extraction date In the release of prescription 👍
+pages 👍
+In teh footer, make it formal, and aligned properly Remove space of the branch 👍
+In forgot password, Change the please contact support to please contact the clinic. 👍
+change the view password (eye) to individual 👍
+Adding Branch- Owner Google Maps URL : Cannot be null 👍
+In adding admin, cannot allow multiple unless specified. 👍
+In adding the past dates should not be clickable 👍
+Add Start date in managing of admin by default/ 👍
+
+
+In the Home: place Welcome Joseph on the side, (left) add for the promos home display images 👍
+tabs branch reports owner 👍
+In profile, center and add picture no picutres lng 👍
+date_updated in patients,denitists,admins after booking and updating 👍
+update status when status is inactive in booking appointment 👍
+Switch status from pending ->> booked 👍
+Add the change email function in profile with otp verification 👍
+
+MAJOR CHANGE - MULTIPLE SERVICE 👍
+
+add admin or prepared by admin 👍
+apply promo transact 👍
+one add vitals and transaction only 👍
+supplies with transact / add and link the service materials per transaction 👍
+cancel appointment and complete appointment / to save transaction and status completed notify user 👍
+receipt admin 👍
+prescription admin 👍
+medical cert admin 👍
+announcments, disable dates if branch is closed 👍
+
+send reminder 👍
+Owner - OTP Every Login 👍
+Admin - OTP Every Login 👍
+Patient - OTP Every Login 👍
+
+home/index reports = achas  👍
+
+PATIENT SIDE
+Welcome, Potot_R3! But it should be Welcome Mr. Richard D. Potot 👍
+Last Update: must be last updated 👍
+Appointment History PATIENT & ADMIN: change 'manage' to 'view' 👍
+
+ADMIN/SECRETARY SIDE
+Upcoming Appointments: exclude tomorrow, instead this 'month'. 👍
+In the calendar, add buttons to separate the branches. remain the colors 👍
+IF POSSIBLE: Pre selected branch in the book appointment. If not keri, its okay my love 👍
+Add 'ANNOUNCEMENT' in the profile page 👍
+
+OWNER SIDE
+remove 'change vs last month' 👍
+add 'ALL' tab in the report 👍
+add 'BRANCHES' in the profile 👍
+remove opening/closing time 👍
+
+ROLE
+uppercase the first letter ex. Patient 👍
+
+patient and outside can view dentists w/ pic 👍
+fixed, files downloadable without image sign 👍
+prescription availabilty 1 year 👍
+upload qr on admin or owner? best owner 👍
+notify owner if services, promos change 👍
+added cashless receipt if payment method is cashless, display also in transaction 👍
+added promo and service in owner for add and edit, admin only change status 👍
+fix promo, service update in receipt 👍
+auto deactivate accounts 3 years 👍
+add checkmark on admin 👍
+promos at index and patient 👍
+display also index in the home pages 👍
+add text box on medcert payment for contact number or reference 👍
+Consultation - â‚±150.00 (15 mins), Total: â‚±150.00 (15 mins total) try again appointment confirmation 👍
+prescription issued after downloading admin or patient/// keep downloadable 👍
+1 owner only creation, how = CLI thru setup creation 👍 
+profile image session saved change file name into dentist_id 👍 
+if nay medcert, update medcert_request_date 👍 
+additional payment 👍 
+branches in above footer 👍 
+Minimum of 5 minutes for OTP time remaining expiration time 👍 
+dentist sched 👍
+edit owner service enable for xray 👍
+xray file upload and display 👍
+schedule available denitists 👍
+transact dentists 👍
+openEducational content final 👍
+verify if 8 am mawa ang booking for current date 👍 verified, all past dates and time with the current date is disabled
+verify recent bookings badge 👍 current date onwards
+send email on admin creation 👍 
+hereby2 sa owner 👍 
+remove contact number and address on owner and edit function 👍 
+service add 0 price 👍 
+fix promo container 👍
+double insert on otp booking, confirming otp, signing in, forgot, change email/password, walkin account creation 👍
+table size since branches and services, too long make dentists short 👍
+admins -> secretary front end 👍
+localhost task scheduler 👍
+
+email validation employees 
+
+owner
+reports tabs, nickname 
+calendar, branches nicknames 
+employees, sorted by status and name, 
+
+admin secretary     
+dashboard secretary buttons card
+calendar fix automatics load on what bracnch loggedin
+recent bookings Upcoming date and time / table header IDs
+added appointment id on email confirmation
+tables, fixed table header
+
+xray remove, make it each on dental_transaction
+added field on service for xray on secretary
+add additional payment on dental trasn service
+all insert and resched appointment with qty 
+resched closed dates
+
+- Owner dob no validation either text, no date calendar or date but year first to enter
+- Dob in book appointment guess if mo type sa year mawala day and month
+- Sa schedule of dentists, di na ma pick ang branch bisag other day nimo sha iassign sa picked branch
+- owner services, if check tann branches, it should say "All branches" instead of meantioning all branches
+
+remove dental cert on booking appontment
+admin calendar on load default branch
+documents since branches too long
+notes ni daze
+block admin in mobile
+mobile view
+
+Notes Suggestion:
+Revenue is money so aligned right, asta ang percentage
+Mawa ang peso
+contribution pweede ra mawa ang percentage
+Line Graph for no need 
+redundant na ang hover for clinic insight patient mix 
+no need the branch columm 
+remove bar g
+labels for services trend 
+Scale 
+labels remove .5 
+if it no zero, if with values put sa income trend 
+
+booking form email validation, all errors display within inputs 👍
+
+in the add secretary, dapat pag enter palang ma validate na 👍
+
+Last updated if no entry is equal to date created - initial value employees, service, promo, branch 👍
+
+Display 9:00 to 4:30 on the Adding the dentist on another branch for ADDING DENTIST 👍
+
+remove the dili pwede i sleect na time, Example: if 4:30, dapat 4 30 taman  time validation nlng
+
+Status followed by the name, in sorting 
+Last name ang name
+
+remove .00 in the services 👍
+simple presentation of the information
+
+Suggestion: in services, put all branch, only list those only ang katong mga branch nga gi assign, 👍
+
+In the demo of the promos, After pila ka minutes mu activate. For demo purposes, for it to 
+
+Promo should require image. 👍
+
+List: bug promo does not show in the admin side after putting the promo in the promo creation
+
+Last update in branches
+
+check the bug in error changing the qr code of the owner
+
+Add note: Use google maps url link 👍
+
+ADMIN
+di comfortable si miss: 
+buttons must be in the end of the card 👍
+
+Remove the dash in the highlights
+
+change the validity to 5 years - inactive/archive 👍
+
+Current date only. 👍
+
+change the sort for to day only and only show the future after all the current day apoointments,  👍
+
+include rebooking button or resched button and it will link to the schedule changing feature./ 
+
+Prepare for the demo individual account, emails, 
+
+to showcase the features
+
+put line in the subtotal 
+
+Pipe is only for programmers. Change the Prescription
+
+Amoxc 60mg - 7
+Once a day for 7 days
+
+Dr. Ben Solante
+Patient Name Should have a proper Format. 
+Put in the container the Branch name
+
+NX ray bya ayha marka resul 
+
+X-Ray : Result, if naa, View Xray Result Button
+
+In the Official Receipt, 
+Promo can be put in the Left, align to discount to how much
+Categorize 
+
+You place minus or wala, 
+
+Additional Payment must broken down on what service. 
+
+Usab nalayout Include in the discount the 
+
+Remove the doctor in the official Receipt
+and license number
+
+Remove page 1 of 1
+
+allow zero input in the medical certificate payment 
+
+Dental Certificate, Jessa Amores
+
+Chagne fitness status to another 
+
+Remove remarks:
+
+or if not , don't make it bold
+
+Make it descriptive
+
+Change the layout to the default dental certificate of the dental clinic
+
+around 30 minutes for demo presentation
+
+PATIENT
+Remove booked/unavailable 👍
+
+Dental Transaction Table changes to the displaying of the table 
+
+Mu show lang ang QR or ang image if nay bayad, don't show if wala 
+
+Prepare examples for demonstration
+
+Demonstration should be organized
+data should be verified, linked.
+Smooth and organized. 
+
+on the reminder, show on the calendar and the verification. 
+
+load dentist with less than start date
+
+fixed date pickers{
+    employees, start date - only accepts tomorrow 👍
+    promos - start date, end date validation 👍
+
+    supplies - expiration date - only accepts tomorrow 👍
+    announcments - start date, end date validation 👍
+}
+medcert {
+    PATIENT
+    WALKIN, REQUEST FOR MEDCERT 👍
+
+    PATIENT 
+    ONLINE REQUEST PATIENT 👍
+    CHECK VALIDITY 7 DAYS - EXPIRED 👍
+    PAY VIA QR, UPLOAD RECEIPT, PENDING, 👍
+    NOTIFY ALL ADMINS IN THAT BRANCHES 👍
+
+    ADMINS
+    CHECK AND DISPLAY PAYMENT WITH 3 INPUTS 👍
+    AFTER ISSUE MEDCERT, UPDATE TOTAL medcert_request_payment 👍
+    NOTIFY PATIENT 👍
+    
+    PATIENT
+    CHECK STATUS, DOWNLOAD MEDCERT, UPDATE STATUS 👍
+
+    view issued button admins and patients, receipt 👍
+    walkin request medcert 👍
+}
+ENCRYPTION {
+    New Patient, insert appointment dob, contact number 👍
+
+    Users {
+        Patient display edit, contact number, address 👍
+    }
+    Admins {
+        Walkin Patient insert appointment 👍
+    }
+    Owners {
+        Dentist sub address into license number 👍
+        Admins 👍
+    }
+}
+
+Contact Fr. Peter for the database hosting and server 💖
+dungan register/book different user 💖
+task scheduler 💖
+
+
+Owner - CEO
+Admin Secretary
+Patients
+| Username      | Password   |
+| ------------- | ---------- |
+| patient01     | patient123 |
+| admin01       | P@rch@s0   |
+| admin_b1_01   | admin_b1   | - babag
+| admin_b1_02   | admin_b1   | - babag
+| admin_b2_01   | admin_b2   | - pusok
+| admin_b2_02   | admin_b2   | - pusok
+| admin_b3_01   | admin_b3   | - mandaue
+| owner01       | P@ssw0rd   |
+
+
+|   Naming Variables   |
+| Type             | Example                       | Notation Style                                    |
+| ---------------- | ----------------------------- | ------------------------------------------------- |
+| **id && name**   | `emailInput`, `mainHeader`    | camelCase (no spaces, first word lowercase)       |
+| **class**        | `form-control`, `input-group` | kebab-case (all lowercase, hyphens between words) |
+| **JS variables** | `userEmail`, `formData`       | camelCase                                         |
+
+|   Naming Variables DB      |
+| Type                       | Example                            | Notation Style                             |
+| -------------------------- | ---------------------------------- | ------------------------------------------ |
+| **Table**                  | `users`, `order_items`             | snake\_case (lowercase, underscores)       |
+| **Column**                 | `email`, `user_name`, `date_created` | snake\_case                                |
+| **Primary Key**            | `id`                               | Usually `id` for primary key in each table |
+| **Foreign Key**            | `user_id`, `product_id`            | `table_singular_id`                        |
+| **Foreign Key Constraint** | `fk_user_id`, `fk_product_id`      | `fk_table_singular_id`                     |
+
+|   Naming Folders  |
+| Type           | Example                                        | Notation Style                              |
+| -------------- | ---------------------------------------------- | ------------------------------------------- |
+| **Folders**    | `css`, `js`, `includes`                        | all lowercase, descriptive                  |
+| **Subfolders** | `home`, `icons`, `logo`                        | all lowercase, single-word                  |
+| **CSS Files**  | `style.css`                                    | lowercase with hyphens if needed            |
+| **PHP Files**  | `about.php`, `navbar.php`                      | lowercase, underscores optional for clarity |
+| **JS Files**   | `togglePassword.js`, `openEducationalModal.js` | camelCase (matches function purpose)        |
+
+
+Appointment / Transaction Details (single record)
+✅ Use get → e.g. get_appointment_details.php, get_dental_transaction_details.php
+Reason: These scripts just fetch details for one record, so get matches REST-like conventions.
+Tables (lists of patients, appointments, transactions, admins, etc.)
+✅ Use load → e.g. load_patients.php, load_transactions.php, load_admins.php
+Reason: These endpoints are usually consumed by DataTables or similar, and they load a dataset, not just a single item.
+REST stands for Representational State Transfer.
+It’s an architectural style (not a strict standard) used when designing APIs.
+
+
+Root/
+│
+├── Admin/
+│   ├── css/
+│   ├── includes/
+│   ├── processes/
+│   ├── pages/
+│   └── index.php ← Admin landing page
+│
+├── Owner/
+│   ├── css/
+│   ├── includes/
+│   ├── processes/
+│   ├── pages/
+│   └── index.php ← Owner landing page
+│
+├── Patient/ 
+│   ├── css/
+│   ├── includes/
+│   ├── processes/
+│   ├── pages/
+│   └── index.php ← Patient landing page 
+│ 
+├── css    
+├── js    
+├── includes
+├── processes
+├── images    
+├── index.php ← Shared login form (for all users)
+└── Notes.txt
+
+
+Font {
+    font-family: "Montserrat", sans-serif;
+}
+
+Buttons {
+    background-color: #122130;
+    transition: background-color 0.3s ease;
+}
+
+Buttons Hover {
+    background-color: #2a394d;
+}
+
+Form {
+    form {
+    width: 100%;
+    }
+
+    .form-group {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 12px;
+        font-size: 16px;
+        outline: none;
+    }
+
+    .form-label {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: #fff;
+        color: #999;
+        font-size: 16px;
+        padding: 0 4px;
+        pointer-events: none;
+        transition: 0.2s ease all;
+    }
+
+    .form-control:focus {
+        border-color: #2196f3;
+    }
+
+    .form-control:focus + .form-label,
+    .form-control:not(:placeholder-shown) + .form-label {
+        top: -10px;
+        left: 10px;
+        color: #2196f3;
+        font-size: 12px;
+    }
+}
+    
+
+
+
+==========================================================================================================================================================================================  
+==========================================================================================================================================================================================
+
+OWNER creation
+
+run "php create_owner.php" on cli /Smile-ify/
+then
+"del create_owner.php"
+"rm create_owner.php"
+<?php
+
+require_once __DIR__ . '/includes/config.php';
+require_once BASE_PATH . '/includes/db.php';
+
+if (php_sapi_name() !== 'cli') {
+    exit("Run this script in CLI only.\n");
+}
+
+$check = $conn->query("SELECT COUNT(*) AS c FROM users WHERE role='owner'");
+$count = $check->fetch_assoc()['c'];
+if ($count > 0) {
+    exit("Owner already exists. Aborting.\n");
+}
+
+echo "=== Smile-ify Owner Setup ===\n\n";
+
+function prompt($label, $required = true)
+{
+    do {
+        echo "$label: ";
+        $input = trim(fgets(STDIN));
+        if ($required && $input === '') {
+            echo "This field is required.\n";
+        }
+    } while ($required && $input === '');
+    return $input;
+}
+
+function promptPassword($label)
+{
+    if (strncasecmp(PHP_OS, 'WIN', 3) === 0) {
+        echo "$label: ";
+        return trim(fgets(STDIN));
+    } else {
+        echo "$label: ";
+        system('stty -echo');
+        $password = trim(fgets(STDIN));
+        system('stty echo');
+        echo "\n";
+        return $password;
+    }
+}
+
+$username       = prompt("Enter username");
+$contact_number = prompt("Enter contact number");
+$first_name     = prompt("Enter first name");
+$middle_name    = prompt("Enter middle name (optional)", false);
+$last_name      = prompt("Enter last name");
+
+do {
+    $password = promptPassword("Enter password");
+    $confirm  = promptPassword("Confirm password");
+    if ($password !== $confirm) {
+        echo "Passwords do not match. Try again.\n";
+    }
+} while ($password !== $confirm);
+
+$email = prompt("Enter email");
+while (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo "Invalid email format. Try again.\n";
+    $email = prompt("Enter email");
+}
+
+$dob = prompt("Enter date of birth (YYYY-MM-DD)");
+while (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $dob)) {
+    echo "Invalid date format. Use YYYY-MM-DD.\n";
+    $dob = prompt("Enter date of birth (YYYY-MM-DD)");
+}
+
+$gender = prompt("Enter gender (Male/Female/Other)");
+$middle_name = ($middle_name === '') ? NULL : $middle_name;
+
+$role = 'owner';
+$status = 'Active';
+$date_started = date('Y-m-d');
+$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+list($dob_encrypted, $dob_iv, $dob_tag) = encryptField($dob);
+list($cn_encrypted, $cn_iv, $cn_tag) = encryptField($contact_number);
+
+$stmt = $conn->prepare("
+    INSERT INTO users (
+        username, password, first_name, middle_name, last_name, email,
+        contact_number, contact_number_iv, contact_number_tag,
+        gender, date_of_birth, date_of_birth_iv, date_of_birth_tag,
+        role, status, date_started, date_created
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())
+");
+
+if (!$stmt) {
+    exit("Prepare failed: " . $conn->error . "\n");
+}
+
+$stmt->bind_param(
+    "ssssssssssssssss",
+    $username,
+    $hashed_password,
+    $first_name,
+    $middle_name,
+    $last_name,
+    $email,
+    $cn_encrypted,
+    $cn_iv,
+    $cn_tag,
+    $gender,
+    $dob_encrypted,
+    $dob_iv,
+    $dob_tag,
+    $role,
+    $status,
+    $date_started
+);
+
+if ($stmt->execute()) {
+    echo "\nOwner account created successfully.\n";
+    echo "Username: $username\n";
+    echo "Email: $email\n";
+} else {
+    echo "Error inserting record: " . $stmt->error . "\n";
+}
+
+$stmt->close();
+$conn->close();
+
+echo "\nDelete this script after use for security.\n";

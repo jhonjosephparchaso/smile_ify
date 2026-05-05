@@ -1,0 +1,335 @@
+.dashboard {
+    padding: 5rem;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.card {
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.card h2 {
+    color: #122130;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.card .appointment,
+.card .announcement {
+    margin-bottom: 0.8rem;
+    padding: 0.5rem;
+    border-left: 4px solid #122130;
+    background: #eef4ff;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+.card-actions {
+    margin-top: auto;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.card-actions .card-link {
+    flex: none;
+}
+
+.quick-links a,
+.card-link {
+    display: inline-block;
+    margin: 0.5rem 0.3rem;
+    padding: 10px 20px;
+    background: #122130;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.quick-links a:hover {
+    background-color: #243b53;
+    transition: background-color 0.3s ease;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 40px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.back-button-container {
+    position: absolute;
+    z-index: 10;
+}
+
+.back-button-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 36px;
+    background: white;
+    border-bottom-right-radius: 4px;
+    color: #007bff;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.back-button-icon:hover {
+    background: #f0f0f0;
+}
+
+.tabs-container {
+    flex: 1;
+    min-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tabs {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 10px 0 0 0;
+    justify-content: center;
+    width: 100%;
+}
+
+.tabs-patient {
+    display: flex;
+    width: 100%;
+}
+
+.tabs-container-announcements {
+    flex: 1;
+    min-width: 350px;
+}
+
+.tabs-announcements {
+    display: flex;
+}
+
+.tab-content {
+    display: none;
+    width: 80%;
+}
+
+.announcements-table {
+    width: 100% !important;
+}
+
+#dental_transactions.tab-content,
+#vitals.tab-content,
+#prescriptions.tab-content {
+    width: 100% !important;
+}
+
+#registeredTable, 
+#recentTable, 
+#inactiveTable, 
+#suppliesTable, 
+#servicesTable, 
+#promosTable, 
+#appointmentTable, 
+#appointment_history, 
+#transactionTable, 
+#dental_transaction,  
+#dentaltransactionTable, 
+#vitalTable, 
+#prescriptionTable {
+    width: 100% !important;
+}
+
+.supplies-table, .services-table, .promos-table {
+    width: 80% !important;
+    margin: 3% auto ;
+}
+
+.table-action {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.table-action button {
+    height: 38px;
+    padding: 6px 12px;
+    border: 1px solid #1e293b;
+    border-radius: 4px;
+    background-color: #1e293b;
+    color: #fff;
+    cursor: pointer;
+}
+
+.table-action-once {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.table-action-once button {
+    display: none;
+    height: 38px;
+    padding: 6px 12px;
+    border: 1px solid #1e293b;
+    border-radius: 4px;
+    background-color: #1e293b;
+    color: #fff;
+    cursor: pointer;
+}
+
+#registeredTable_filter,
+#recentTable_filter,
+#inactiveTable_filter,
+#suppliesTable_filter,
+#servicesTable_filter,
+#promosTable_filter,
+#appointmentTable_filter,
+#announcementsTable_filter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#registeredTable_filter input[type="search"],
+#recentTable_filter input[type="search"],
+#inactiveTable_filter input[type="search"],
+#appointmentTable_filter input[type="search"], 
+#transactionTable_filter input[type="search"],
+#suppliesTable_filter input[type="search"],
+#servicesTable_filter input[type="search"],
+#promosTable_filter input[type="search"],
+#announcementsTable_filter input[type="search"] {
+    height: 38px;
+    padding: 6px 12px;
+}
+
+#registeredTable_filter button,
+#recentTable_filter button,
+#inactiveTable_filter button,
+#appointmentTable_filter button,
+#suppliesTable_filter button,
+#dentaltransactionTable_filter button,
+#vitalTable_filter button,
+#prescriptionTable_filter button,
+#announcementsTable_filter button {
+    height: 38px;
+    padding: 6px 12px;
+    border: 1px solid #1e293b;
+    border-radius: 4px;
+    background-color: #1e293b;
+    color: #fff;
+    cursor: pointer;
+}
+
+#registeredTable th:nth-child(1), #registeredTable td:nth-child(1) { width: 10% !important; text-align: center;}
+#registeredTable th:nth-child(2), #registeredTable td:nth-child(2) { width: 20% !important; }
+#registeredTable th:nth-child(3), #registeredTable td:nth-child(3) { width: 20% !important; }
+#registeredTable th:nth-child(4), #registeredTable td:nth-child(4) { width: 30% !important; }
+#registeredTable th:nth-child(5), #registeredTable td:nth-child(5) { width: 10% !important; text-align: center;}
+
+#inactiveTable th:nth-child(1), #inactiveTable td:nth-child(1) { width: 10% !important; text-align: center;}
+#inactiveTable th:nth-child(2), #inactiveTable td:nth-child(2) { width: 20% !important; }
+#inactiveTable th:nth-child(3), #inactiveTable td:nth-child(3) { width: 20% !important; }
+#inactiveTable th:nth-child(4), #inactiveTable td:nth-child(4) { width: 30% !important; }
+#inactiveTable th:nth-child(5), #inactiveTable td:nth-child(5) { width: 10% !important; text-align: center;}
+
+#recentTable th:nth-child(1), #recentTable td:nth-child(1) { width: 10% !important; text-align: center;}
+#recentTable th:nth-child(2), #recentTable td:nth-child(2) { width: 20% !important; }
+#recentTable th:nth-child(3), #recentTable td:nth-child(3) { width: 20% !important; }
+#recentTable th:nth-child(4), #recentTable td:nth-child(4) { width: 5% !important; text-align: center;}
+#recentTable th:nth-child(5), #recentTable td:nth-child(5) { width: 5% !important; text-align: center;}
+#recentTable th:nth-child(6), #recentTable td:nth-child(6) { width: 5% !important; text-align: center;}
+
+#dentaltransactionTable th:nth-child(1), #dentaltransactionTable td:nth-child(1) { width: 5% !important; text-align: center;}
+#dentaltransactionTable th:nth-child(2), #dentaltransactionTable td:nth-child(2) { width: 15% !important; }
+#dentaltransactionTable th:nth-child(3), #dentaltransactionTable td:nth-child(3) { width: 40% !important; }
+#dentaltransactionTable th:nth-child(4), #dentaltransactionTable td:nth-child(4) { width: 10% !important; }
+#dentaltransactionTable th:nth-child(5), #dentaltransactionTable td:nth-child(5) { width: 10% !important; }
+#dentaltransactionTable th:nth-child(6), #dentaltransactionTable td:nth-child(6) { width: 10% !important; text-align: center;}
+
+#vitalTable th:nth-child(1), #vitalTable td:nth-child(1) { width: 5% !important; text-align: center; }
+#vitalTable th:nth-child(2), #vitalTable td:nth-child(2) { width: 20% !important; }
+#vitalTable th:nth-child(3), #vitalTable td:nth-child(3) { width: 20% !important; }
+#vitalTable th:nth-child(4), #vitalTable td:nth-child(4) { width: 20% !important; }
+#vitalTable th:nth-child(5), #vitalTable td:nth-child(5) { width: 10% !important; text-align: center; }
+
+#prescriptionTable th:nth-child(1), #prescriptionTable td:nth-child(1) { width: 5% !important; text-align: center; }
+#prescriptionTable th:nth-child(2), #prescriptionTable td:nth-child(2) { width: 20% !important; }
+#prescriptionTable th:nth-child(3), #prescriptionTable td:nth-child(3) { width: 15% !important; }
+#prescriptionTable th:nth-child(4), #prescriptionTable td:nth-child(4) { width: 15% !important; }
+#prescriptionTable th:nth-child(5), #prescriptionTable td:nth-child(5) { width: 15% !important; }
+#prescriptionTable th:nth-child(6), #prescriptionTable td:nth-child(6) { width: 10% !important; text-align: center; }
+
+#suppliesTable th:nth-child(1), #suppliesTable td:nth-child(1) { width: 5% !important; text-align: center;}
+#suppliesTable th:nth-child(2), #suppliesTable td:nth-child(2) { width: 20% !important; }
+#suppliesTable th:nth-child(3), #suppliesTable td:nth-child(3) { width: 10% !important; text-align: center;}
+#suppliesTable th:nth-child(4), #suppliesTable td:nth-child(4) { width: 10% !important; text-align: center;}
+#suppliesTable th:nth-child(5), #suppliesTable td:nth-child(5) { width: 10% !important; text-align: center;}
+#suppliesTable th:nth-child(6), #suppliesTable td:nth-child(6) { width: 10% !important; text-align: center;}
+
+#servicesTable th:nth-child(1), #servicesTable td:nth-child(1) { width: 5% !important; text-align: center;}
+#servicesTable th:nth-child(2), #servicesTable td:nth-child(2) { width: 20% !important; }
+#servicesTable th:nth-child(3), #servicesTable td:nth-child(3) { width: 10% !important; text-align: center;}
+#servicesTable th:nth-child(4), #servicesTable td:nth-child(4) { width: 10% !important; text-align: center;}
+#servicesTable th:nth-child(5), #servicesTable td:nth-child(5) { width: 10% !important; text-align: center;}
+#servicesTable th:nth-child(6), #servicesTable td:nth-child(6) { width: 10% !important; text-align: center;}
+
+#promosTable th:nth-child(1), #promosTable td:nth-child(1) { width: 5% !important; text-align: center;}
+#promosTable th:nth-child(2), #promosTable td:nth-child(2) { width: 20% !important; }
+#promosTable th:nth-child(3), #promosTable td:nth-child(3) { width: 10% !important; text-align: center;}
+#promosTable th:nth-child(4), #promosTable td:nth-child(4) { width: 10% !important; text-align: center;}
+#promosTable th:nth-child(5), #promosTable td:nth-child(5) { width: 10% !important; text-align: center;}
+#promosTable th:nth-child(6), #promosTable td:nth-child(6) { width: 10% !important; text-align: center;}
+
+#announcementsTable th:nth-child(1), #announcementsTable td:nth-child(1) { width: 5% !important; text-align: center; }
+#announcementsTable th:nth-child(2), #announcementsTable td:nth-child(2) { width: 20% !important; }
+#announcementsTable th:nth-child(3), #announcementsTable td:nth-child(3) { width: 10% !important; }
+#announcementsTable th:nth-child(4), #announcementsTable td:nth-child(4) { width: 10% !important; }
+#announcementsTable th:nth-child(5), #announcementsTable td:nth-child(5) { width: 10% !important; }
+#announcementsTable th:nth-child(6), #announcementsTable td:nth-child(6) { width: 10% !important; text-align: center;}
+#announcementsTable th:nth-child(7), #announcementsTable td:nth-child(7) { width: 10% !important; text-align: center; }
+
+.transaction-table th:nth-child(1), .transaction-table td:nth-child(1) { width: 5% !important; text-align: center;}
+.transaction-table th:nth-child(2), .transaction-table td:nth-child(2) { width: 20% !important; }
+.transaction-table th:nth-child(3), .transaction-table td:nth-child(3) { width: 20% !important; }
+.transaction-table th:nth-child(4), .transaction-table td:nth-child(4) { width: 5% !important; }
+.transaction-table th:nth-child(5), .transaction-table td:nth-child(5) { width: 5% !important; }
+.transaction-table th:nth-child(6), .transaction-table td:nth-child(6) { width: 5% !important; }
+.transaction-table th:nth-child(7), .transaction-table td:nth-child(7) { width: 10% !important; text-align: center;}
+
+@media (max-width: 900px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        justify-content: center;
+        align-items: center;
+    }
+    .profile-card {
+        width: 90%;
+        max-width: 400px;
+    }
+}
